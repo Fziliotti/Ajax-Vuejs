@@ -11,8 +11,10 @@
 	<div id="app" class="container txt-center">
 		<div class="jumbotron">
 			<h1 class="display-1">Ajax e VueJs</h1>
-		<button @click.stop.prevent= "getUsers()" class=" btn btn-success btn-lg ">Carregar usuarios</button>
-		
+			<button @click.stop.prevent= "getPosts()" class=" btn btn-success btn-lg ">Carregar usuarios</button>
+
+			<button @click.stop.prevent= "getPhotos()" class=" btn btn-success btn-lg ">Carregar usuarios</button>
+
 		</div>
 		
 
@@ -29,19 +31,34 @@
 				</div>
 			</div>
 
+			<div class="row">
+				<div v-for="photo in photos" class="col-md-4">
+					<div  class="card text-white bg-secondary my-2" style="min-height: 350px;" >
+						<div class="card-header">PHOTOS</div>
+						<img class="card-img-top"s :src="photo.url" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">{{photo.title}}</h5>
+							<p class="card-text">{{photo.url}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</section>
 
 		<span v-if="response.status == 'error'" class="alert alert-danger"> {{response.msg}}</span>
 
 		<div v-if ="loader.posts" class="loader"></div>
+		<div v-if ="loader.photos" class="loader"></div>
 	</div>
 
 
 
 
-
+	
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 	<script src="js/main.js"></script>
 
 </body>
